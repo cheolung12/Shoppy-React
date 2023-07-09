@@ -65,3 +65,15 @@ export async function addNewProduct(product, imageUrl){
     options: product.options.split(','),
   })
 }
+
+export async function getProducts() {
+  // ref 지정해서 get 하기
+  return get(ref(database, 'products'))
+  .then(snapshot => {
+    if(snapshot.exists()) {
+      // key 말고 value만 필요 => Object.values활용!
+      return Object.values(snapshot.val());
+    } 
+    return [];
+  })
+}
