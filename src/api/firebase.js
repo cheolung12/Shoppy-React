@@ -6,7 +6,7 @@ import {
   signOut,
   onAuthStateChanged,
 } from "firebase/auth";
-import { getDatabase, ref, get, set } from "firebase/database";
+import { getDatabase, ref, get, set, remove } from "firebase/database";
 import {v4 as uuid} from 'uuid';
 
 const firebaseConfig = {
@@ -95,3 +95,4 @@ export async function removeFromCart(userId, productId) {
   return remove(ref(database, `carts/${userId}/${productId}`));
 }
 
+ 
